@@ -86,10 +86,30 @@ class RestaurantTest {
     @Test
     public void selecting_soup_should_return_orderValue_of_119(){
         restaurant = createRestaurant();
-        addItemsToMenu();
+        addItemsToMenu(restaurant);
 
-        restaurant.AddItemToSelection("Sweet corn soup");
+        restaurant.addToOrder("Sweet corn soup");
 
-        assertEquals(119, restaurant.getOrderTotal());
+        assertEquals(119, restaurant.getOrderPrice());
+    }
+
+    @Test
+    public void  selecting_2_soups_and_1_lasgne_should_return_order_value_of_507(){
+        restaurant = createRestaurant();
+        addItemsToMenu(restaurant);
+
+        restaurant.addToOrder("Sweet corn soup");
+        restaurant.addToOrder("Sweet corn soup");
+        restaurant.addToOrder("Vegetable lasagne");
+
+        assertEquals(507, restaurant.getOrderPrice());
+    }
+
+    @Test
+    public void  selecting_no_items_should_return_order_value_of_0(){
+        restaurant = createRestaurant();
+        addItemsToMenu(restaurant);
+
+        assertEquals(0, restaurant.getOrderPrice());
     }
 }
