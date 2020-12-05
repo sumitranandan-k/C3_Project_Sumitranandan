@@ -81,4 +81,15 @@ class RestaurantTest {
 
         return  service.addRestaurant("Amelie's cafe","Chennai",openingTime,closingTime);
     }
+
+
+    @Test
+    public void selecting_soup_should_return_orderValue_of_119(){
+        restaurant = createRestaurant();
+        addItemsToMenu();
+
+        restaurant.AddItemToSelection("Sweet corn soup");
+
+        assertEquals(119, restaurant.getOrderTotal());
+    }
 }
